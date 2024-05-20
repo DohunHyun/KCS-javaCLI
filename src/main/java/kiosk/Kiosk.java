@@ -2,10 +2,7 @@ package kiosk;
 
 import kiosk.controller.MenuListMaker;
 import kiosk.controller.OrderManager;
-import kiosk.model.Coffee;
-import kiosk.model.Menu;
-import kiosk.model.Order;
-import kiosk.model.Tea;
+import kiosk.model.*;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -23,7 +20,13 @@ public class Kiosk {
 
     void run() {
         while(true) {
-            System.out.println("안녕하세요 카페 땡떙 입니다.");
+            System.out.println(" _____    _    _____ _____  __  __ ____ ____");
+            System.out.println("/ ___|   / \\  |  ___| ____| | |/ / ___/ ___|");
+            System.out.println("| |     / _ \\ | |_  |  _|   | ' / |   \\___ \\ ");
+            System.out.println("| |___ / ___ \\|  _| | |___  | . \\ |___ ___) |");
+            System.out.println("\\____/_/   \\_\\_|    |_____| |_|\\_\\____|____/ ");
+            System.out.println();
+            System.out.println("안녕하세요 카페 KCS 입니다.");
 
             int userInput = getOrderOrCheck();
             if(userInput == 1) {
@@ -184,7 +187,7 @@ public class Kiosk {
             int menuNumber = Integer.parseInt(userInput.split(" ")[0]);
             int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
 
-            orderManager.makeOrder(new Coffee(menuNumber, menuAmount));
+            orderManager.makeOrder(new Cake(menuNumber, menuAmount));
         } else {
             System.out.println("입력이 잘못됐습니다. 다시 시도해주세요.");
         }
@@ -209,7 +212,7 @@ public class Kiosk {
             int menuNumber = Integer.parseInt(userInput.split(" ")[0]);
             int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
 
-            orderManager.makeOrder(new Coffee(menuNumber, menuAmount));
+            orderManager.makeOrder(new Bread(menuNumber, menuAmount));
         } else {
             System.out.println("입력이 잘못됐습니다. 다시 시도해주세요.");
         }
@@ -266,11 +269,12 @@ public class Kiosk {
         orderManager.charge();
         Order order = orderManager.getOrder();
 
+        System.out.println();
         System.out.println("<주문 목록>");
         int price = 0;
         for(Menu menu : order.getMenuList()) {
             System.out.println(menu.getMenuName() + " " + menu.getAmount() + "개");
-            price += menu.getPrice();
+            price += menu.getPrice() * menu.getAmount();
         }
         System.out.println("총 결제 금액은 " + price + "원 입니다.");
         System.out.println();

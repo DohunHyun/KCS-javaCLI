@@ -21,4 +21,12 @@ public class Menu {
     public int getAmount() {
         return amount;
     }
+
+    public void setMenuName(String menuName) {
+        this.menuName = menuName;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 }

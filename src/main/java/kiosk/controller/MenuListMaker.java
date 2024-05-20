@@ -11,6 +11,22 @@ public class MenuListMaker {
     List<Cake> cakeList;
     List<Bread> breadList;
 
+    public List<Coffee> getCoffeeList() {
+        return coffeeList;
+    }
+
+    public List<Tea> getTeaList() {
+        return teaList;
+    }
+
+    public List<Cake> getCakeList() {
+        return cakeList;
+    }
+
+    public List<Bread> getBreadList() {
+        return breadList;
+    }
+
     public MenuListMaker() {
         coffeeList = new ArrayList<>();
         teaList = new ArrayList<>();

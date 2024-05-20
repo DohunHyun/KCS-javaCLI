@@ -6,7 +6,7 @@ public class Tea extends Drink{
         super.amount = amount;
     }
 
-    public Tea(int menuNumber, String MenuName, int price) {
+    public Tea(int menuNumber, String menuName, int price) {
         super.menuNumber = menuNumber;
         super.menuName = menuName;
         super.price = price;

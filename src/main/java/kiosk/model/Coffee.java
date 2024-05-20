@@ -1,6 +1,7 @@
 package kiosk.model;
 
 public class Coffee extends Drink {
+    int moreShot;
 
     public Coffee(int menuNumber, int amount) {
         super.menuNumber = menuNumber;
@@ -11,5 +12,9 @@ public class Coffee extends Drink {
         super.menuNumber = menuNumber;
         super.menuName = menuName;
         super.price = price;
+    }
+
+    void setMoreShot(int moreShot) {
+        this.moreShot = moreShot;
     }
 }
