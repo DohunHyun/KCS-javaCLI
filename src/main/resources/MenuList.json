@@ -1,0 +1,26 @@
+[
+  {
+    "menuNumber": 1,
+    "menuName": "아이스아메리카노",
+    "price": 4500,
+    "category": "Coffee"
+  },
+  {
+    "menuNumber": 2,
+    "menuName": "따뜻한아메리카노",
+    "price": 4500,
+    "category": "Coffee"
+  },
+  {
+    "menuNumber": 3,
+    "menuName": "아이스라떼",
+    "price": 5000,
+    "category": "Coffee"
+  },
+  {
+    "menuNumber": 4,
+    "menuName": "따뜻한라떼",
+    "price": 5000,
+    "category": "Coffee"
+  }
+]
