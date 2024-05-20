@@ -21,10 +21,8 @@ public class Kiosk {
 
             int userInput = getOrderOrCheck();
             if(userInput == 1) {
-                // 주문
                 getOrder();
             } else if(userInput == 2) {
-                // 주문 확인
                 checkOrder();
             }
 
@@ -88,7 +86,7 @@ public class Kiosk {
         if(userInput == 1) {
             getCoffeeOrder();
         } else if(userInput == 2) {
-//            getTeaOrder();
+            getTeaOrder();
         } else {
             System.out.println("잘못된 입력입니다.");
         }
@@ -117,7 +115,32 @@ public class Kiosk {
         } else {
             System.out.println("입력이 잘못됐습니다. 다시 시도해주세요.");
         }
+        askMoreMenu();
+    }
 
+    void getTeaOrder() {
+        System.out.println();
+        System.out.println("---------------");
+        System.out.println();
+        System.out.println("차 메뉴 입니다.");
+
+        System.out.println("<차 메뉴>");
+        menuListMaker.printTeaMenu();
+        System.out.println();
+        System.out.println("원하시는 메뉴의 번호와 개수를 입력해주세요.");
+        System.out.println("* 메뉴 번호와 개수 사이에 공백을 넣어주시기 바랍니다.");
+        System.out.println("예) 1 1");
+
+        String userInput = sc.nextLine();
+        if(validateMenuInput(userInput)) {
+            int menuNumber = Integer.parseInt(userInput.split(" ")[0]);
+            int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
+
+
+            orderManager.makeOrder(new Tea(menuNumber, menuAmount));
+        } else {
+            System.out.println("입력이 잘못됐습니다. 다시 시도해주세요.");
+        }
         askMoreMenu();
     }
 

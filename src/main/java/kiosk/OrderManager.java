@@ -15,6 +15,10 @@ public class OrderManager {
         order.menuList.add(coffee);
     }
 
+    void makeOrder(Tea tea) {
+        order.menuList.add(tea);
+    }
+
     Order getOrder() {
         return order;
     }
