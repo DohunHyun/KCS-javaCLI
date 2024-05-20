@@ -6,6 +6,10 @@ public class Menu {
     int price;
     int amount;
 
+    public int getMenuNumber() {
+        return menuNumber;
+    }
+
     public String getMenuName() {
         return menuName;
     }

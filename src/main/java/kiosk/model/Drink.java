@@ -9,12 +9,6 @@ public class Drink extends Menu {
 
     }
 
-    public Drink(int moreIce, int addShot, boolean isTogo) {
-        this.moreIce = moreIce;
-        this.addShot = addShot;
-        this.isTogo = isTogo;
-    }
-
     public int getMoreIce() {
         return moreIce;
     }

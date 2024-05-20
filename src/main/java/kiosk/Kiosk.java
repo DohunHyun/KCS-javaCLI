@@ -22,7 +22,6 @@ public class Kiosk {
     }
 
     void run() {
-
         while(true) {
             System.out.println("안녕하세요 카페 땡떙 입니다.");
 
@@ -72,7 +71,7 @@ public class Kiosk {
             if(userInput == 1) {
                 getDrinkOrder();
             } else if(userInput == 2) {
-//                getFoodOrder();
+                getFoodOrder();
             } else if(userInput == 3) {
                 break;
             } else {
@@ -117,7 +116,6 @@ public class Kiosk {
             int menuNumber = Integer.parseInt(userInput.split(" ")[0]);
             int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
 
-
             orderManager.makeOrder(new Coffee(menuNumber, menuAmount));
         } else {
             System.out.println("입력이 잘못됐습니다. 다시 시도해주세요.");
@@ -143,8 +141,75 @@ public class Kiosk {
             int menuNumber = Integer.parseInt(userInput.split(" ")[0]);
             int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
 
-
             orderManager.makeOrder(new Tea(menuNumber, menuAmount));
+        } else {
+            System.out.println("입력이 잘못됐습니다. 다시 시도해주세요.");
+        }
+        askMoreMenu();
+    }
+
+    void getFoodOrder() {
+        System.out.println();
+        System.out.println("음식 메뉴 입니다.");
+        System.out.println("1. 케이크");
+        System.out.println("2. 빵");
+
+        int userInput = sc.nextInt();
+        sc.nextLine();
+
+        if(userInput == 1) {
+            getCakeOrder();
+        } else if(userInput == 2) {
+            getBreadOrder();
+        } else {
+            System.out.println("잘못된 입력입니다.");
+        }
+    }
+
+    void getCakeOrder() {
+        System.out.println();
+        System.out.println("---------------");
+        System.out.println();
+        System.out.println("케이크 메뉴 입니다.");
+
+        System.out.println("<케이크 메뉴>");
+        menuListMaker.printCakeMenu();
+        System.out.println();
+        System.out.println("원하시는 메뉴의 번호와 개수를 입력해주세요.");
+        System.out.println("* 메뉴 번호와 개수 사이에 공백을 넣어주시기 바랍니다.");
+        System.out.println("예) 1 1");
+
+        String userInput = sc.nextLine();
+        if(validateMenuInput(userInput)) {
+            int menuNumber = Integer.parseInt(userInput.split(" ")[0]);
+            int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
+
+            orderManager.makeOrder(new Coffee(menuNumber, menuAmount));
+        } else {
+            System.out.println("입력이 잘못됐습니다. 다시 시도해주세요.");
+        }
+        askMoreMenu();
+    }
+
+    void getBreadOrder() {
+        System.out.println();
+        System.out.println("---------------");
+        System.out.println();
+        System.out.println("빵 메뉴 입니다.");
+
+        System.out.println("<빵 메뉴>");
+        menuListMaker.printBreadMenu();
+        System.out.println();
+        System.out.println("원하시는 메뉴의 번호와 개수를 입력해주세요.");
+        System.out.println("* 메뉴 번호와 개수 사이에 공백을 넣어주시기 바랍니다.");
+        System.out.println("예) 1 1");
+
+        String userInput = sc.nextLine();
+        if(validateMenuInput(userInput)) {
+            int menuNumber = Integer.parseInt(userInput.split(" ")[0]);
+            int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
+
+            orderManager.makeOrder(new Coffee(menuNumber, menuAmount));
         } else {
             System.out.println("입력이 잘못됐습니다. 다시 시도해주세요.");
         }

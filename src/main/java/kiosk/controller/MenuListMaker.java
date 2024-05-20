@@ -1,7 +1,6 @@
 package kiosk.controller;
 
-import kiosk.model.Coffee;
-import kiosk.model.Tea;
+import kiosk.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,16 +8,22 @@ import java.util.List;
 public class MenuListMaker {
     List<Coffee> coffeeList;
     List<Tea> teaList;
+    List<Cake> cakeList;
+    List<Bread> breadList;
 
     public MenuListMaker() {
         coffeeList = new ArrayList<>();
         teaList = new ArrayList<>();
+        cakeList = new ArrayList<>();
+        breadList = new ArrayList<>();
         makeMenuList();
     }
 
     void makeMenuList() {
         makeCoffeeList();
         makeTeaList();
+        makeCakeList();
+        makeBreadList();
     }
 
     void makeCoffeeList() {
@@ -38,19 +43,47 @@ public class MenuListMaker {
         teaList.add(new Tea(5, "따뜻한페퍼민트", 4000));
     }
 
+    void makeCakeList() {
+        cakeList.add(new Cake(1, "초코케이크", 6000));
+        cakeList.add(new Cake(2, "딸기생크림케이크", 6500));
+        cakeList.add(new Cake(3, "치즈케이크", 5500));
+    }
+
+    void makeBreadList() {
+        breadList.add(new Bread(1, "허니브레드", 6000));
+        breadList.add(new Bread(2, "소금빵", 3500));
+        breadList.add(new Bread(3, "에그샌드위치", 4000));
+    }
+
     public void printCoffeeMenu() {
         for(Coffee coffee : coffeeList) {
-            System.out.println(coffee.menuNumber + ". "
-                    + coffee.menuName + " / "
-                    + coffee.price);
+            System.out.println(coffee.getMenuNumber() + ". "
+                    + coffee.getMenuName() + " / "
+                    + coffee.getPrice());
         }
     }
 
     public void printTeaMenu() {
         for(Tea tea : teaList) {
-            System.out.println(tea.menuNumber + ". "
-                    + tea.menuName + " / "
-                    + tea.price);
+            System.out.println(tea.getMenuNumber() + ". "
+                    + tea.getMenuName() + " / "
+                    + tea.getPrice());
+        }
+    }
+
+    public void printCakeMenu() {
+        for(Cake cake : cakeList) {
+            System.out.println(cake.getMenuNumber() + ". "
+                    + cake.getMenuName() + " / "
+                    + cake.getPrice());
+        }
+    }
+
+    public void printBreadMenu() {
+        for(Bread bread : breadList) {
+            System.out.println(bread.getMenuNumber() + ". "
+                    + bread.getMenuName() + " / "
+                    + bread.getPrice());
         }
     }
 }
