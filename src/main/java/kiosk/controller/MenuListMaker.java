@@ -1,4 +1,7 @@
-package kiosk;
+package kiosk.controller;
+
+import kiosk.model.Coffee;
+import kiosk.model.Tea;
 
 import java.util.ArrayList;
 import java.util.List;

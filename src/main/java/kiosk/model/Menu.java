@@ -1,4 +1,4 @@
-package kiosk;
+package kiosk.model;
 
 public class Menu {
     int menuNumber;
@@ -12,5 +12,9 @@ public class Menu {
 
     public int getPrice() {
         return price;
+    }
+
+    public int getAmount() {
+        return amount;
     }
 }

@@ -1,5 +1,12 @@
 package kiosk;
 
+import kiosk.controller.MenuListMaker;
+import kiosk.controller.OrderManager;
+import kiosk.model.Coffee;
+import kiosk.model.Menu;
+import kiosk.model.Order;
+import kiosk.model.Tea;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -165,7 +172,7 @@ public class Kiosk {
 
         Order order = orderManager.checkOrderByNumber(userInput);
         if(order != null) {
-            if(order.isReadyOrder) {
+            if(order.getIsGetReady()) {
                 System.out.println("모든 메뉴가 준비되었습니다. 픽업해주세요.");
             } else {
                 System.out.println("메뉴가 아직 준비중입니다. 잠시만 기다려주세요.");
@@ -196,15 +203,15 @@ public class Kiosk {
 
         System.out.println("<주문 목록>");
         int price = 0;
-        for(Menu menu : order.menuList) {
-            System.out.println(menu.menuName + " " + menu.amount + "개");
-            price += menu.price;
+        for(Menu menu : order.getMenuList()) {
+            System.out.println(menu.getMenuName() + " " + menu.getAmount() + "개");
+            price += menu.getPrice();
         }
         System.out.println("총 결제 금액은 " + price + "원 입니다.");
         System.out.println();
 
         System.out.println("결제가 완료되었습니다.");
-        System.out.println("주문번호는 " + orderManager.getOrder().orderNumber + " 입니다.");
+        System.out.println("주문번호는 " + orderManager.getOrder().getOrderNumber() + " 입니다.");
         System.out.println("주문번호로 부르면 픽업대로 와주세요.");
     }
 
