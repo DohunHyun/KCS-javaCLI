@@ -25,6 +25,7 @@ public class Kiosk {
                 getOrder();
             } else if(userInput == 2) {
                 // 주문 확인
+                checkOrder();
             }
 
             if(askQuit()) {
@@ -59,7 +60,7 @@ public class Kiosk {
             System.out.println();
             System.out.println("1. 음료 (커피, 차)");
             System.out.println("2. 음식 (케이크, 빵)");
-            System.out.println("3. 종료");
+            System.out.println("3. 종료 / 처음으로");
             int userInput = sc.nextInt();
             sc.nextLine();
 
@@ -133,6 +134,24 @@ public class Kiosk {
         return true;
     }
 
+    void checkOrder() {
+        System.out.println();
+        System.out.println("주문 확인을 위한 주문 번호를 입력해주세요.");
+        int userInput = sc.nextInt();
+        sc.nextLine();
+
+        Order order = orderManager.checkOrderByNumber(userInput);
+        if(order != null) {
+            if(order.isReadyOrder) {
+                System.out.println("모든 메뉴가 준비되었습니다. 픽업해주세요.");
+            } else {
+                System.out.println("메뉴가 아직 준비중입니다. 잠시만 기다려주세요.");
+            }
+        } else {
+            System.out.println("주문번호가 잘못되었습니다. 다시 확인해주세요.");
+        }
+    }
+
     void askMoreMenu() {
         System.out.println();
         System.out.println("추가 주문을 하시겠습니까?");
@@ -149,7 +168,21 @@ public class Kiosk {
     }
 
     void getCharge() {
+        orderManager.charge();
+        Order order = orderManager.getOrder();
 
+        System.out.println("<주문 목록>");
+        int price = 0;
+        for(Menu menu : order.menuList) {
+            System.out.println(menu.menuName + " " + menu.amount + "개");
+            price += menu.price;
+        }
+        System.out.println("총 결제 금액은 " + price + "원 입니다.");
+        System.out.println();
+
+        System.out.println("결제가 완료되었습니다.");
+        System.out.println("주문번호는 " + orderManager.getOrder().orderNumber + " 입니다.");
+        System.out.println("주문번호로 부르면 픽업대로 와주세요.");
     }
 
     boolean askQuit() {

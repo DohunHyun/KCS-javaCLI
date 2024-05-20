@@ -14,4 +14,22 @@ public class OrderManager {
     void makeOrder(Coffee coffee) {
         order.menuList.add(coffee);
     }
+
+    Order getOrder() {
+        return order;
+    }
+
+    void charge() {
+        // 결제 처리.
+        orderList.add(order);
+    }
+
+    Order checkOrderByNumber(int orderNumber) {
+        for(Order order : orderList) {
+            if(order.orderNumber == orderNumber) {
+                return order;
+            }
+        }
+        return null;
+    }
 }
