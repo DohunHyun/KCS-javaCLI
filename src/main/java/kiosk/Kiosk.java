@@ -29,10 +29,10 @@ public class Kiosk {
             System.out.println();
             System.out.println("안녕하세요 카페 KCS 입니다.");
 
-            int userInput = getOrderOrCheck();
-            if(userInput == 1) {
+            String userInput = getOrderOrCheck();
+            if(userInput.equals(constants.INPUT_ONE.getMsg())) {
                 getOrder();
-            } else if(userInput == 2) {
+            } else if(userInput.equals(constants.INPUT_TWO.getMsg())) {
                 checkOrder();
             }
 
@@ -43,16 +43,16 @@ public class Kiosk {
         }
     }
 
-    int getOrderOrCheck() {
+    String getOrderOrCheck() {
         System.out.println();
         System.out.println("무엇을 도와 드릴까요?");
         System.out.println("1. 주문하기");
         System.out.println("2. 주문확인");
 
-        int userInput = sc.nextInt();
-        sc.nextLine();
+        String userInput = sc.nextLine();
 
-        if(userInput == 1 || userInput == 2) {
+        if(userInput.equals(constants.INPUT_ONE.getMsg())
+                || userInput.equals(constants.INPUT_TWO.getMsg())) {
             return userInput;
         } else {
             System.out.println(constants.WRONG_INPUT_MSG);
@@ -69,14 +69,13 @@ public class Kiosk {
             System.out.println("1. 음료 (커피, 차)");
             System.out.println("2. 음식 (케이크, 빵)");
             System.out.println("3. 종료 / 처음으로");
-            int userInput = sc.nextInt();
-            sc.nextLine();
 
-            if(userInput == 1) {
+            String userInput = sc.nextLine();
+            if(userInput.equals(constants.INPUT_ONE.getMsg())) {
                 getDrinkOrder();
-            } else if(userInput == 2) {
+            } else if(userInput.equals(constants.INPUT_TWO.getMsg())) {
                 getFoodOrder();
-            } else if(userInput == 3) {
+            } else if(userInput.equals(constants.INPUT_THREE.getMsg())) {
                 break;
             } else {
                 System.out.println(constants.WRONG_INPUT_MSG);
@@ -91,14 +90,12 @@ public class Kiosk {
         System.out.println("2. 차");
         System.out.println("3. 주스");
 
-        int userInput = sc.nextInt();
-        sc.nextLine();
-
-        if(userInput == 1) {
+        String userInput = sc.nextLine();
+        if(userInput.equals(constants.INPUT_ONE.getMsg())) {
             getCoffeeOrder();
-        } else if(userInput == 2) {
+        } else if(userInput.equals(constants.INPUT_TWO.getMsg())) {
             getTeaOrder();
-        } else if(userInput == 3) {
+        } else if(userInput.equals(constants.INPUT_THREE.getMsg())) {
             getJuiceOrder();
         } else {
             System.out.println(constants.WRONG_INPUT_MSG);
@@ -177,12 +174,10 @@ public class Kiosk {
         System.out.println("1. 케이크");
         System.out.println("2. 빵");
 
-        int userInput = sc.nextInt();
-        sc.nextLine();
-
-        if(userInput == 1) {
+        String userInput = sc.nextLine();
+        if(userInput.equals(constants.INPUT_ONE.getMsg())) {
             getCakeOrder();
-        } else if(userInput == 2) {
+        } else if(userInput.equals(constants.INPUT_TWO.getMsg())) {
             getBreadOrder();
         } else {
             System.out.println("잘못된 입력입니다.");
@@ -259,12 +254,11 @@ public class Kiosk {
         System.out.println("추가 주문을 하시겠습니까?");
         System.out.println("1. 추가");
         System.out.println("2. 결제");
-        int userInput = sc.nextInt();
-        sc.nextLine();
 
-        if(userInput == 1) {
+        String userInput = sc.nextLine();
+        if(userInput.equals(constants.INPUT_ONE.getMsg())) {
             getOrder();
-        } else {
+        } else if(userInput.equals(constants.INPUT_TWO.getMsg())) {
             getCharge();
         }
     }
@@ -292,15 +286,15 @@ public class Kiosk {
         System.out.println();
         System.out.println("키오스크 사용을 그만할까요?");
         System.out.println("종료를 원하시면 1, 계속 사용하고 싶으면 2 를 입력해주세요.");
-        int userInput = sc.nextInt();
 
-        if(userInput == 1) {
+        String userInput = sc.nextLine();
+        if(userInput.equals(constants.INPUT_ONE.getMsg())) {
             System.out.println("사용해주셔서 감사합니다. 다음에 또 방문해주세요.");
             return true;
-        } else {
+        } else if(userInput.equals(constants.INPUT_TWO.getMsg())) {
             System.out.println();
             return false;
         }
-
+        return false;
     }
 }
