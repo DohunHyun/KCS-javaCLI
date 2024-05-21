@@ -170,12 +170,13 @@ public class OrderManager {
     }
 
     public Order getOrder() {
-        return order;
+        return this.order;
     }
 
     public void charge() {
         // 결제 처리.
         orderList.add(order);
+        this.order = new Order(orderList.size());
     }
 
     public Order checkOrderByNumber(int orderNumber) {

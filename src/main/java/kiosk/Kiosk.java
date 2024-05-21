@@ -64,23 +64,22 @@ public class Kiosk {
     void getOrder() {
         System.out.println();
         System.out.println("주문하실 메뉴를 골라주세요.");
-        while(true) {
-            System.out.println();
-            System.out.println("1. 음료 (커피, 차, 주스, 에이드)");
-            System.out.println("2. 음식 (케이크, 빵)");
-            System.out.println("3. 종료 / 처음으로");
+        System.out.println();
+        System.out.println("1. 음료 (커피, 차, 주스, 에이드)");
+        System.out.println("2. 음식 (케이크, 빵)");
+        System.out.println("3. 종료 / 처음으로");
 
-            String userInput = sc.nextLine();
-            if(userInput.equals(constants.INPUT_ONE.getMsg())) {
-                getDrinkOrder();
-            } else if(userInput.equals(constants.INPUT_TWO.getMsg())) {
-                getFoodOrder();
-            } else if(userInput.equals(constants.INPUT_THREE.getMsg())) {
-                break;
-            } else {
-                System.out.println(constants.WRONG_INPUT_MSG);
-            }
+        String userInput = sc.nextLine();
+        if(userInput.equals(constants.INPUT_ONE.getMsg())) {
+            getDrinkOrder();
+        } else if(userInput.equals(constants.INPUT_TWO.getMsg())) {
+            getFoodOrder();
+        } else if(userInput.equals(constants.INPUT_THREE.getMsg())) {
+
+        } else {
+            System.out.println(constants.WRONG_INPUT_MSG);
         }
+
     }
 
     void getDrinkOrder() {
@@ -284,8 +283,8 @@ public class Kiosk {
     }
 
     void getCharge() {
-        orderManager.charge();
         Order order = orderManager.getOrder();
+        orderManager.charge();
 
         System.out.println();
         System.out.println("<주문 목록>");
@@ -294,11 +293,11 @@ public class Kiosk {
             System.out.println(menu.getMenuName() + " " + menu.getAmount() + "개");
             price += menu.getPrice() * menu.getAmount();
         }
-        System.out.println("총 결제 금액은 " + price + "원 입니다.");
+        System.out.println("총 결제 금액은 " + String.format("%,d", price) + "원 입니다.");
         System.out.println();
 
         System.out.println("결제가 완료되었습니다.");
-        System.out.println("주문번호는 " + orderManager.getOrder().getOrderNumber() + " 입니다.");
+        System.out.println("주문번호는 " + order.getOrderNumber() + " 입니다.");
         System.out.println("주문번호로 부르면 픽업대로 와주세요.");
     }
 
