@@ -97,6 +97,7 @@ public class MenuListMaker {
         breadList.add(new Bread(3, "에그샌드위치", 4000));
     }
 
+    // 메뉴 출력
     public void printCoffeeMenu() {
         for(Coffee coffee : coffeeList) {
             System.out.println(coffee.getMenuNumber() + ". "

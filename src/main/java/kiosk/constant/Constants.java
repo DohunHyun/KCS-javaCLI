@@ -1,6 +1,6 @@
 package kiosk.constant;
 
-public enum constants {
+public enum Constants {
     INPUT_ONE("1"),
     INPUT_TWO("2"),
     INPUT_THREE("3"),
@@ -17,9 +17,9 @@ public enum constants {
 
     WRONG_INPUT_MSG("잘못된 입력입니다.");
 
-    private String msg;
+    private final String msg;
 
-    constants(String msg) {
+    Constants(String msg) {
         this.msg = msg;
     }
 

@@ -13,6 +13,7 @@ public class OrderManager {
         order = new Order(orderList.size());
     }
 
+    // 주문 만들기
     public void makeOrder(Coffee coffee) {
         coffee.setMenuName(findNameByNumber(coffee));
         coffee.setPrice(findPriceByNumber(coffee));
@@ -49,6 +50,7 @@ public class OrderManager {
         order.addMenuList(bread);
     }
 
+    // 주문 시 메뉴 이름 찾아서 저장
     String findNameByNumber(Coffee coffee) {
         MenuListMaker menuListMaker = new MenuListMaker();
         for(Menu item : menuListMaker.getCoffeeList()) {
@@ -109,6 +111,7 @@ public class OrderManager {
         return "";
     }
 
+    // 주문 시 메뉴 가격 찾아서 저장
     int findPriceByNumber(Coffee coffee) {
         MenuListMaker menuListMaker = new MenuListMaker();
         for(Menu item : menuListMaker.getCoffeeList()) {
@@ -169,16 +172,14 @@ public class OrderManager {
         return 0;
     }
 
-    public Order getOrder() {
-        return this.order;
-    }
-
+    // 결제하기
     public void charge() {
         // 결제 처리.
         orderList.add(order);
         this.order = new Order(orderList.size());
     }
 
+    // 주문 번호로 주문 확인
     public Order checkOrderByNumber(int orderNumber) {
         for(Order order : orderList) {
             if(order.getOrderNumber() == orderNumber) {
@@ -186,5 +187,9 @@ public class OrderManager {
             }
         }
         return null;
+    }
+
+    public Order getOrder() {
+        return this.order;
     }
 }

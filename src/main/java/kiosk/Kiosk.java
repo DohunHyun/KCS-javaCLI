@@ -3,7 +3,7 @@ package kiosk;
 import kiosk.controller.MenuListMaker;
 import kiosk.controller.OrderManager;
 import kiosk.model.*;
-import kiosk.constant.constants;
+import kiosk.constant.Constants;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -19,6 +19,7 @@ public class Kiosk {
         menuListMaker = new MenuListMaker();
     }
 
+    // 키오스크 프로그램 실행
     void run() {
         while(true) {
             System.out.println(" _____    _    _____ _____  __  __ ____ ____");
@@ -30,9 +31,9 @@ public class Kiosk {
             System.out.println("안녕하세요 카페 KCS 입니다.");
 
             String userInput = getOrderOrCheck();
-            if(userInput.equals(constants.INPUT_ONE.getMsg())) {
+            if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
                 getOrder();
-            } else if(userInput.equals(constants.INPUT_TWO.getMsg())) {
+            } else if(userInput.equals(Constants.INPUT_TWO.getMsg())) {
                 checkOrder();
             }
 
@@ -43,6 +44,7 @@ public class Kiosk {
         }
     }
 
+    // 주문하기, 확인하기
     String getOrderOrCheck() {
         System.out.println();
         System.out.println("무엇을 도와 드릴까요?");
@@ -51,16 +53,17 @@ public class Kiosk {
 
         String userInput = sc.nextLine();
 
-        if(userInput.equals(constants.INPUT_ONE.getMsg())
-                || userInput.equals(constants.INPUT_TWO.getMsg())) {
+        if(userInput.equals(Constants.INPUT_ONE.getMsg())
+                || userInput.equals(Constants.INPUT_TWO.getMsg())) {
             return userInput;
         } else {
-            System.out.println(constants.WRONG_INPUT_MSG);
+            System.out.println(Constants.WRONG_INPUT_MSG);
             System.out.println();
             return getOrderOrCheck();
         }
     }
 
+    // 주문하기
     void getOrder() {
         System.out.println();
         System.out.println("주문하실 메뉴를 골라주세요.");
@@ -70,37 +73,53 @@ public class Kiosk {
         System.out.println("3. 종료 / 처음으로");
 
         String userInput = sc.nextLine();
-        if(userInput.equals(constants.INPUT_ONE.getMsg())) {
+        if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
             getDrinkOrder();
-        } else if(userInput.equals(constants.INPUT_TWO.getMsg())) {
+        } else if(userInput.equals(Constants.INPUT_TWO.getMsg())) {
             getFoodOrder();
-        } else if(userInput.equals(constants.INPUT_THREE.getMsg())) {
+        } else if(userInput.equals(Constants.INPUT_THREE.getMsg())) {
 
         } else {
-            System.out.println(constants.WRONG_INPUT_MSG);
+            System.out.println(Constants.WRONG_INPUT_MSG);
         }
 
     }
 
     void getDrinkOrder() {
         System.out.println();
-        System.out.println(constants.DRINK.getMsg() + " 메뉴 입니다.");
-        System.out.println("1. " + constants.COFFEE.getMsg());
-        System.out.println("2. " + constants.TEA.getMsg());
-        System.out.println("3. " + constants.JUICE.getMsg());
-        System.out.println("4. " + constants.ADE.getMsg());
+        System.out.println(Constants.DRINK.getMsg() + " 메뉴 입니다.");
+        System.out.println("1. " + Constants.COFFEE.getMsg());
+        System.out.println("2. " + Constants.TEA.getMsg());
+        System.out.println("3. " + Constants.JUICE.getMsg());
+        System.out.println("4. " + Constants.ADE.getMsg());
 
         String userInput = sc.nextLine();
-        if(userInput.equals(constants.INPUT_ONE.getMsg())) {
+        if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
             getCoffeeOrder();
-        } else if(userInput.equals(constants.INPUT_TWO.getMsg())) {
+        } else if(userInput.equals(Constants.INPUT_TWO.getMsg())) {
             getTeaOrder();
-        } else if(userInput.equals(constants.INPUT_THREE.getMsg())) {
+        } else if(userInput.equals(Constants.INPUT_THREE.getMsg())) {
             getJuiceOrder();
-        } else if(userInput.equals(constants.INPUT_FOUR.getMsg())) {
+        } else if(userInput.equals(Constants.INPUT_FOUR.getMsg())) {
             getAdeOrder();
         } else {
-            System.out.println(constants.WRONG_INPUT_MSG);
+            System.out.println(Constants.WRONG_INPUT_MSG);
+        }
+    }
+
+    void getFoodOrder() {
+        System.out.println();
+        System.out.println(Constants.FOOD.getMsg() + " 메뉴 입니다.");
+        System.out.println("1. " + Constants.CAKE.getMsg());
+        System.out.println("2. " + Constants.BREAD.getMsg());
+
+        String userInput = sc.nextLine();
+        if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
+            getCakeOrder();
+        } else if(userInput.equals(Constants.INPUT_TWO.getMsg())) {
+            getBreadOrder();
+        } else {
+            System.out.println(Constants.WRONG_INPUT_MSG.getMsg());
         }
     }
 
@@ -120,7 +139,7 @@ public class Kiosk {
     }
 
     void getCoffeeOrder() {
-        printMenu(constants.COFFEE.getMsg());
+        printMenu(Constants.COFFEE.getMsg());
         menuListMaker.printCoffeeMenu();
         printHowInput();
 
@@ -131,13 +150,13 @@ public class Kiosk {
 
             orderManager.makeOrder(new Coffee(menuNumber, menuAmount));
         } else {
-            System.out.println(constants.WRONG_INPUT_MSG);
+            System.out.println(Constants.WRONG_INPUT_MSG);
         }
         askMoreMenu();
     }
 
     void getTeaOrder() {
-        printMenu(constants.TEA.getMsg());
+        printMenu(Constants.TEA.getMsg());
         menuListMaker.printTeaMenu();
         printHowInput();
 
@@ -148,13 +167,13 @@ public class Kiosk {
 
             orderManager.makeOrder(new Tea(menuNumber, menuAmount));
         } else {
-            System.out.println(constants.WRONG_INPUT_MSG);
+            System.out.println(Constants.WRONG_INPUT_MSG);
         }
         askMoreMenu();
     }
 
     void getJuiceOrder() {
-        printMenu(constants.JUICE.getMsg());
+        printMenu(Constants.JUICE.getMsg());
         menuListMaker.printJuiceMenu();
         printHowInput();
 
@@ -165,13 +184,13 @@ public class Kiosk {
 
             orderManager.makeOrder(new Juice(menuNumber, menuAmount));
         } else {
-            System.out.println(constants.WRONG_INPUT_MSG);
+            System.out.println(Constants.WRONG_INPUT_MSG);
         }
         askMoreMenu();
     }
 
     void getAdeOrder() {
-        printMenu(constants.ADE.getMsg());
+        printMenu(Constants.ADE.getMsg());
         menuListMaker.printAdeMenu();
         printHowInput();
 
@@ -182,29 +201,13 @@ public class Kiosk {
 
             orderManager.makeOrder(new Ade(menuNumber, menuAmount));
         } else {
-            System.out.println(constants.WRONG_INPUT_MSG);
+            System.out.println(Constants.WRONG_INPUT_MSG);
         }
         askMoreMenu();
     }
 
-    void getFoodOrder() {
-        System.out.println();
-        System.out.println(constants.FOOD.getMsg() + " 메뉴 입니다.");
-        System.out.println("1. " + constants.CAKE.getMsg());
-        System.out.println("2. " + constants.BREAD.getMsg());
-
-        String userInput = sc.nextLine();
-        if(userInput.equals(constants.INPUT_ONE.getMsg())) {
-            getCakeOrder();
-        } else if(userInput.equals(constants.INPUT_TWO.getMsg())) {
-            getBreadOrder();
-        } else {
-            System.out.println(constants.WRONG_INPUT_MSG.getMsg());
-        }
-    }
-
     void getCakeOrder() {
-        printMenu(constants.CAKE.getMsg());
+        printMenu(Constants.CAKE.getMsg());
         menuListMaker.printCakeMenu();
         printHowInput();
 
@@ -215,13 +218,13 @@ public class Kiosk {
 
             orderManager.makeOrder(new Cake(menuNumber, menuAmount));
         } else {
-            System.out.println(constants.WRONG_INPUT_MSG);
+            System.out.println(Constants.WRONG_INPUT_MSG);
         }
         askMoreMenu();
     }
 
     void getBreadOrder() {
-        printMenu(constants.BREAD.getMsg());
+        printMenu(Constants.BREAD.getMsg());
         menuListMaker.printBreadMenu();
         printHowInput();
 
@@ -232,7 +235,7 @@ public class Kiosk {
 
             orderManager.makeOrder(new Bread(menuNumber, menuAmount));
         } else {
-            System.out.println(constants.WRONG_INPUT_MSG);
+            System.out.println(Constants.WRONG_INPUT_MSG);
         }
         askMoreMenu();
     }
@@ -250,6 +253,7 @@ public class Kiosk {
         return true;
     }
 
+    // 주문 확인하기
     void checkOrder() {
         System.out.println();
         System.out.println("주문 확인을 위한 주문 번호를 입력해주세요.");
@@ -264,7 +268,7 @@ public class Kiosk {
                 System.out.println("메뉴가 아직 준비중입니다. 잠시만 기다려주세요.");
             }
         } else {
-            System.out.println(constants.WRONG_INPUT_MSG);
+            System.out.println(Constants.WRONG_INPUT_MSG);
         }
     }
 
@@ -275,9 +279,9 @@ public class Kiosk {
         System.out.println("2. 결제");
 
         String userInput = sc.nextLine();
-        if(userInput.equals(constants.INPUT_ONE.getMsg())) {
+        if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
             getOrder();
-        } else if(userInput.equals(constants.INPUT_TWO.getMsg())) {
+        } else if(userInput.equals(Constants.INPUT_TWO.getMsg())) {
             getCharge();
         }
     }
@@ -307,10 +311,10 @@ public class Kiosk {
         System.out.println("종료를 원하시면 1, 계속 사용하고 싶으면 2 를 입력해주세요.");
 
         String userInput = sc.nextLine();
-        if(userInput.equals(constants.INPUT_ONE.getMsg())) {
+        if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
             System.out.println("사용해주셔서 감사합니다. 다음에 또 방문해주세요.");
             return true;
-        } else if(userInput.equals(constants.INPUT_TWO.getMsg())) {
+        } else if(userInput.equals(Constants.INPUT_TWO.getMsg())) {
             System.out.println();
             return false;
         }
