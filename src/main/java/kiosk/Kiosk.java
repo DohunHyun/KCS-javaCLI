@@ -85,10 +85,10 @@ public class Kiosk {
 
     void getDrinkOrder() {
         System.out.println();
-        System.out.println("음료 메뉴 입니다.");
-        System.out.println("1. 커피");
-        System.out.println("2. 차");
-        System.out.println("3. 주스");
+        System.out.println(constants.DRINK.getMsg() + " 메뉴 입니다.");
+        System.out.println("1. " + constants.COFFEE.getMsg());
+        System.out.println("2. " + constants.TEA.getMsg());
+        System.out.println("3. " + constants.JUICE.getMsg());
 
         String userInput = sc.nextLine();
         if(userInput.equals(constants.INPUT_ONE.getMsg())) {
@@ -110,7 +110,7 @@ public class Kiosk {
         System.out.println("<" + select + " 메뉴>");
     }
 
-    void printHowPut() {
+    void printHowInput() {
         System.out.println();
         System.out.println("원하시는 메뉴의 번호와 개수를 입력해주세요.");
         System.out.println("* 메뉴 번호와 개수 사이에 공백을 넣어주시기 바랍니다.");
@@ -118,9 +118,9 @@ public class Kiosk {
     }
 
     void getCoffeeOrder() {
-        printMenu("커피");
+        printMenu(constants.COFFEE.getMsg());
         menuListMaker.printCoffeeMenu();
-        printHowPut();
+        printHowInput();
 
         String userInput = sc.nextLine();
         if(validateMenuInput(userInput)) {
@@ -135,9 +135,9 @@ public class Kiosk {
     }
 
     void getTeaOrder() {
-        printMenu("차");
+        printMenu(constants.TEA.getMsg());
         menuListMaker.printTeaMenu();
-        printHowPut();
+        printHowInput();
 
         String userInput = sc.nextLine();
         if(validateMenuInput(userInput)) {
@@ -152,9 +152,9 @@ public class Kiosk {
     }
 
     void getJuiceOrder() {
-        printMenu("주스");
+        printMenu(constants.JUICE.getMsg());
         menuListMaker.printJuiceMenu();
-        printHowPut();
+        printHowInput();
 
         String userInput = sc.nextLine();
         if(validateMenuInput(userInput)) {
@@ -170,9 +170,9 @@ public class Kiosk {
 
     void getFoodOrder() {
         System.out.println();
-        System.out.println("음식 메뉴 입니다.");
-        System.out.println("1. 케이크");
-        System.out.println("2. 빵");
+        System.out.println(constants.FOOD.getMsg() + " 메뉴 입니다.");
+        System.out.println("1. " + constants.CAKE.getMsg());
+        System.out.println("2. " + constants.BREAD.getMsg());
 
         String userInput = sc.nextLine();
         if(userInput.equals(constants.INPUT_ONE.getMsg())) {
@@ -180,14 +180,14 @@ public class Kiosk {
         } else if(userInput.equals(constants.INPUT_TWO.getMsg())) {
             getBreadOrder();
         } else {
-            System.out.println("잘못된 입력입니다.");
+            System.out.println(constants.WRONG_INPUT_MSG.getMsg());
         }
     }
 
     void getCakeOrder() {
-        printMenu("케이크");
+        printMenu(constants.CAKE.getMsg());
         menuListMaker.printCakeMenu();
-        printHowPut();
+        printHowInput();
 
         String userInput = sc.nextLine();
         if(validateMenuInput(userInput)) {
@@ -202,9 +202,9 @@ public class Kiosk {
     }
 
     void getBreadOrder() {
-        printMenu("빵");
+        printMenu(constants.BREAD.getMsg());
         menuListMaker.printBreadMenu();
-        printHowPut();
+        printHowInput();
 
         String userInput = sc.nextLine();
         if(validateMenuInput(userInput)) {
