@@ -31,6 +31,12 @@ public class OrderManager {
         order.addMenuList(juice);
     }
 
+    public void makeOrder(Ade ade) {
+        ade.setMenuName(findNameByNumber(ade));
+        ade.setPrice(findPriceByNumber(ade));
+        order.addMenuList(ade);
+    }
+
     public void makeOrder(Cake cake) {
         cake.setMenuName(findNameByNumber(cake));
         cake.setPrice(findPriceByNumber(cake));
@@ -65,8 +71,18 @@ public class OrderManager {
 
     String findNameByNumber(Juice juice) {
         MenuListMaker menuListMaker = new MenuListMaker();
-        for(Menu item : menuListMaker.getTeaList()) {
+        for(Menu item : menuListMaker.getJuiceList()) {
             if(juice.getMenuNumber() == item.getMenuNumber()) {
+                return item.getMenuName();
+            }
+        }
+        return "";
+    }
+
+    String findNameByNumber(Ade ade) {
+        MenuListMaker menuListMaker = new MenuListMaker();
+        for(Menu item : menuListMaker.getAdeList()) {
+            if(ade.getMenuNumber() == item.getMenuNumber()) {
                 return item.getMenuName();
             }
         }
@@ -115,8 +131,18 @@ public class OrderManager {
 
     int findPriceByNumber(Juice juice) {
         MenuListMaker menuListMaker = new MenuListMaker();
-        for(Menu item : menuListMaker.getTeaList()) {
+        for(Menu item : menuListMaker.getJuiceList()) {
             if(juice.getMenuNumber() == item.getMenuNumber()) {
+                return item.getPrice();
+            }
+        }
+        return 0;
+    }
+
+    int findPriceByNumber(Ade ade) {
+        MenuListMaker menuListMaker = new MenuListMaker();
+        for(Menu item : menuListMaker.getAdeList()) {
+            if(ade.getMenuNumber() == item.getMenuNumber()) {
                 return item.getPrice();
             }
         }

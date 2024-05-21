@@ -9,6 +9,7 @@ public class MenuListMaker {
     List<Coffee> coffeeList;
     List<Tea> teaList;
     List<Juice> juiceList;
+    List<Ade> adeList;
     List<Cake> cakeList;
     List<Bread> breadList;
 
@@ -24,6 +25,10 @@ public class MenuListMaker {
         return juiceList;
     }
 
+    public List<Ade> getAdeList() {
+        return adeList;
+    }
+
     public List<Cake> getCakeList() {
         return cakeList;
     }
@@ -36,6 +41,7 @@ public class MenuListMaker {
         coffeeList = new ArrayList<>();
         teaList = new ArrayList<>();
         juiceList = new ArrayList<>();
+        adeList = new ArrayList<>();
         cakeList = new ArrayList<>();
         breadList = new ArrayList<>();
         makeMenuList();
@@ -45,6 +51,7 @@ public class MenuListMaker {
         makeCoffeeList();
         makeTeaList();
         makeJuiceList();
+        makeAdeList();
         makeCakeList();
         makeBreadList();
     }
@@ -70,6 +77,12 @@ public class MenuListMaker {
         juiceList.add(new Juice(1, "오렌지주스", 6000));
         juiceList.add(new Juice(2, "토마토주스", 6000));
         juiceList.add(new Juice(3, "청포도케일주스", 6500));
+    }
+
+    void makeAdeList() {
+        adeList.add(new Ade(1, "레몬에이드", 6000));
+        adeList.add(new Ade(2, "자몽에이드", 6000));
+        adeList.add(new Ade(3, "청포도에이드", 6000));
     }
 
     void makeCakeList() {
@@ -105,6 +118,14 @@ public class MenuListMaker {
             System.out.println(juice.getMenuNumber() + ". "
                     + juice.getMenuName() + " / "
                     + juice.getPrice());
+        }
+    }
+
+    public void printAdeMenu() {
+        for(Ade ade : adeList) {
+            System.out.println(ade.getMenuNumber() + ". "
+                    + ade.getMenuName() + " / "
+                    + ade.getPrice());
         }
     }
 

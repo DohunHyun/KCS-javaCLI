@@ -66,7 +66,7 @@ public class Kiosk {
         System.out.println("주문하실 메뉴를 골라주세요.");
         while(true) {
             System.out.println();
-            System.out.println("1. 음료 (커피, 차)");
+            System.out.println("1. 음료 (커피, 차, 주스, 에이드)");
             System.out.println("2. 음식 (케이크, 빵)");
             System.out.println("3. 종료 / 처음으로");
 
@@ -89,6 +89,7 @@ public class Kiosk {
         System.out.println("1. " + constants.COFFEE.getMsg());
         System.out.println("2. " + constants.TEA.getMsg());
         System.out.println("3. " + constants.JUICE.getMsg());
+        System.out.println("4. " + constants.ADE.getMsg());
 
         String userInput = sc.nextLine();
         if(userInput.equals(constants.INPUT_ONE.getMsg())) {
@@ -97,6 +98,8 @@ public class Kiosk {
             getTeaOrder();
         } else if(userInput.equals(constants.INPUT_THREE.getMsg())) {
             getJuiceOrder();
+        } else if(userInput.equals(constants.INPUT_FOUR.getMsg())) {
+            getAdeOrder();
         } else {
             System.out.println(constants.WRONG_INPUT_MSG);
         }
@@ -162,6 +165,23 @@ public class Kiosk {
             int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
 
             orderManager.makeOrder(new Juice(menuNumber, menuAmount));
+        } else {
+            System.out.println(constants.WRONG_INPUT_MSG);
+        }
+        askMoreMenu();
+    }
+
+    void getAdeOrder() {
+        printMenu(constants.ADE.getMsg());
+        menuListMaker.printAdeMenu();
+        printHowInput();
+
+        String userInput = sc.nextLine();
+        if(validateMenuInput(userInput)) {
+            int menuNumber = Integer.parseInt(userInput.split(" ")[0]);
+            int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
+
+            orderManager.makeOrder(new Ade(menuNumber, menuAmount));
         } else {
             System.out.println(constants.WRONG_INPUT_MSG);
         }
