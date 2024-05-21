@@ -8,6 +8,7 @@ import java.util.List;
 public class MenuListMaker {
     List<Coffee> coffeeList;
     List<Tea> teaList;
+    List<Juice> juiceList;
     List<Cake> cakeList;
     List<Bread> breadList;
 
@@ -17,6 +18,10 @@ public class MenuListMaker {
 
     public List<Tea> getTeaList() {
         return teaList;
+    }
+
+    public List<Juice> getJuiceList() {
+        return juiceList;
     }
 
     public List<Cake> getCakeList() {
@@ -30,6 +35,7 @@ public class MenuListMaker {
     public MenuListMaker() {
         coffeeList = new ArrayList<>();
         teaList = new ArrayList<>();
+        juiceList = new ArrayList<>();
         cakeList = new ArrayList<>();
         breadList = new ArrayList<>();
         makeMenuList();
@@ -38,6 +44,7 @@ public class MenuListMaker {
     void makeMenuList() {
         makeCoffeeList();
         makeTeaList();
+        makeJuiceList();
         makeCakeList();
         makeBreadList();
     }
@@ -57,6 +64,12 @@ public class MenuListMaker {
         teaList.add(new Tea(3, "아이스티", 4000));
         teaList.add(new Tea(4, "아이스페퍼민트", 4000));
         teaList.add(new Tea(5, "따뜻한페퍼민트", 4000));
+    }
+
+    void makeJuiceList() {
+        juiceList.add(new Juice(1, "오렌지주스", 6000));
+        juiceList.add(new Juice(2, "토마토주스", 6000));
+        juiceList.add(new Juice(3, "청포도케일주스", 6500));
     }
 
     void makeCakeList() {
@@ -84,6 +97,14 @@ public class MenuListMaker {
             System.out.println(tea.getMenuNumber() + ". "
                     + tea.getMenuName() + " / "
                     + tea.getPrice());
+        }
+    }
+
+    public void printJuiceMenu() {
+        for(Juice juice : juiceList) {
+            System.out.println(juice.getMenuNumber() + ". "
+                    + juice.getMenuName() + " / "
+                    + juice.getPrice());
         }
     }
 

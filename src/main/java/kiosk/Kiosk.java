@@ -89,6 +89,7 @@ public class Kiosk {
         System.out.println("음료 메뉴 입니다.");
         System.out.println("1. 커피");
         System.out.println("2. 차");
+        System.out.println("3. 주스");
 
         int userInput = sc.nextInt();
         sc.nextLine();
@@ -97,6 +98,8 @@ public class Kiosk {
             getCoffeeOrder();
         } else if(userInput == 2) {
             getTeaOrder();
+        } else if(userInput == 3) {
+            getJuiceOrder();
         } else {
             System.out.println(constants.WRONG_INPUT_MSG);
         }
@@ -145,6 +148,23 @@ public class Kiosk {
             int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
 
             orderManager.makeOrder(new Tea(menuNumber, menuAmount));
+        } else {
+            System.out.println(constants.WRONG_INPUT_MSG);
+        }
+        askMoreMenu();
+    }
+
+    void getJuiceOrder() {
+        printMenu("주스");
+        menuListMaker.printJuiceMenu();
+        printHowPut();
+
+        String userInput = sc.nextLine();
+        if(validateMenuInput(userInput)) {
+            int menuNumber = Integer.parseInt(userInput.split(" ")[0]);
+            int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
+
+            orderManager.makeOrder(new Juice(menuNumber, menuAmount));
         } else {
             System.out.println(constants.WRONG_INPUT_MSG);
         }

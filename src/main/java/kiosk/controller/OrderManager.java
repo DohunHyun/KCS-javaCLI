@@ -25,6 +25,12 @@ public class OrderManager {
         order.addMenuList(tea);
     }
 
+    public void makeOrder(Juice juice) {
+        juice.setMenuName(findNameByNumber(juice));
+        juice.setPrice(findPriceByNumber(juice));
+        order.addMenuList(juice);
+    }
+
     public void makeOrder(Cake cake) {
         cake.setMenuName(findNameByNumber(cake));
         cake.setPrice(findPriceByNumber(cake));
@@ -51,6 +57,16 @@ public class OrderManager {
         MenuListMaker menuListMaker = new MenuListMaker();
         for(Menu item : menuListMaker.getTeaList()) {
             if(tea.getMenuNumber() == item.getMenuNumber()) {
+                return item.getMenuName();
+            }
+        }
+        return "";
+    }
+
+    String findNameByNumber(Juice juice) {
+        MenuListMaker menuListMaker = new MenuListMaker();
+        for(Menu item : menuListMaker.getTeaList()) {
+            if(juice.getMenuNumber() == item.getMenuNumber()) {
                 return item.getMenuName();
             }
         }
@@ -91,6 +107,16 @@ public class OrderManager {
         MenuListMaker menuListMaker = new MenuListMaker();
         for(Menu item : menuListMaker.getTeaList()) {
             if(tea.getMenuNumber() == item.getMenuNumber()) {
+                return item.getPrice();
+            }
+        }
+        return 0;
+    }
+
+    int findPriceByNumber(Juice juice) {
+        MenuListMaker menuListMaker = new MenuListMaker();
+        for(Menu item : menuListMaker.getTeaList()) {
+            if(juice.getMenuNumber() == item.getMenuNumber()) {
                 return item.getPrice();
             }
         }
