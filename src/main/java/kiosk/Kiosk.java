@@ -101,18 +101,25 @@ public class Kiosk {
         }
     }
 
-    void getCoffeeOrder() {
+    void printMenu(String select) {
         System.out.println();
         System.out.println("---------------");
         System.out.println();
-        System.out.println("커피 메뉴 입니다.");
+        System.out.println(select + " 메뉴 입니다.");
+        System.out.println("<" + select + " 메뉴>");
+    }
 
-        System.out.println("<커피 메뉴>");
-        menuListMaker.printCoffeeMenu();
+    void printHowPut() {
         System.out.println();
         System.out.println("원하시는 메뉴의 번호와 개수를 입력해주세요.");
         System.out.println("* 메뉴 번호와 개수 사이에 공백을 넣어주시기 바랍니다.");
         System.out.println("예) 1 1");
+    }
+
+    void getCoffeeOrder() {
+        printMenu("커피");
+        menuListMaker.printCoffeeMenu();
+        printHowPut();
 
         String userInput = sc.nextLine();
         if(validateMenuInput(userInput)) {
@@ -127,17 +134,9 @@ public class Kiosk {
     }
 
     void getTeaOrder() {
-        System.out.println();
-        System.out.println("---------------");
-        System.out.println();
-        System.out.println("차 메뉴 입니다.");
-
-        System.out.println("<차 메뉴>");
+        printMenu("차");
         menuListMaker.printTeaMenu();
-        System.out.println();
-        System.out.println("원하시는 메뉴의 번호와 개수를 입력해주세요.");
-        System.out.println("* 메뉴 번호와 개수 사이에 공백을 넣어주시기 바랍니다.");
-        System.out.println("예) 1 1");
+        printHowPut();
 
         String userInput = sc.nextLine();
         if(validateMenuInput(userInput)) {
@@ -170,17 +169,9 @@ public class Kiosk {
     }
 
     void getCakeOrder() {
-        System.out.println();
-        System.out.println("---------------");
-        System.out.println();
-        System.out.println("케이크 메뉴 입니다.");
-
-        System.out.println("<케이크 메뉴>");
+        printMenu("케이크");
         menuListMaker.printCakeMenu();
-        System.out.println();
-        System.out.println("원하시는 메뉴의 번호와 개수를 입력해주세요.");
-        System.out.println("* 메뉴 번호와 개수 사이에 공백을 넣어주시기 바랍니다.");
-        System.out.println("예) 1 1");
+        printHowPut();
 
         String userInput = sc.nextLine();
         if(validateMenuInput(userInput)) {
@@ -195,17 +186,9 @@ public class Kiosk {
     }
 
     void getBreadOrder() {
-        System.out.println();
-        System.out.println("---------------");
-        System.out.println();
-        System.out.println("빵 메뉴 입니다.");
-
-        System.out.println("<빵 메뉴>");
+        printMenu("빵");
         menuListMaker.printBreadMenu();
-        System.out.println();
-        System.out.println("원하시는 메뉴의 번호와 개수를 입력해주세요.");
-        System.out.println("* 메뉴 번호와 개수 사이에 공백을 넣어주시기 바랍니다.");
-        System.out.println("예) 1 1");
+        printHowPut();
 
         String userInput = sc.nextLine();
         if(validateMenuInput(userInput)) {
