@@ -3,6 +3,7 @@ package kiosk;
 import kiosk.controller.MenuListMaker;
 import kiosk.controller.OrderManager;
 import kiosk.model.*;
+import kiosk.constant.constants;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -54,7 +55,7 @@ public class Kiosk {
         if(userInput == 1 || userInput == 2) {
             return userInput;
         } else {
-            System.out.println("잘못된 입력입니다. 1 또는 2 를 입력해주세요.");
+            System.out.println(constants.WRONG_INPUT_MSG);
             System.out.println();
             return getOrderOrCheck();
         }
@@ -78,7 +79,7 @@ public class Kiosk {
             } else if(userInput == 3) {
                 break;
             } else {
-                System.out.println("잘못된 입력입니다.");
+                System.out.println(constants.WRONG_INPUT_MSG);
             }
         }
     }
@@ -97,7 +98,7 @@ public class Kiosk {
         } else if(userInput == 2) {
             getTeaOrder();
         } else {
-            System.out.println("잘못된 입력입니다.");
+            System.out.println(constants.WRONG_INPUT_MSG);
         }
     }
 
@@ -128,7 +129,7 @@ public class Kiosk {
 
             orderManager.makeOrder(new Coffee(menuNumber, menuAmount));
         } else {
-            System.out.println("입력이 잘못됐습니다. 다시 시도해주세요.");
+            System.out.println(constants.WRONG_INPUT_MSG);
         }
         askMoreMenu();
     }
@@ -145,7 +146,7 @@ public class Kiosk {
 
             orderManager.makeOrder(new Tea(menuNumber, menuAmount));
         } else {
-            System.out.println("입력이 잘못됐습니다. 다시 시도해주세요.");
+            System.out.println(constants.WRONG_INPUT_MSG);
         }
         askMoreMenu();
     }
@@ -180,7 +181,7 @@ public class Kiosk {
 
             orderManager.makeOrder(new Cake(menuNumber, menuAmount));
         } else {
-            System.out.println("입력이 잘못됐습니다. 다시 시도해주세요.");
+            System.out.println(constants.WRONG_INPUT_MSG);
         }
         askMoreMenu();
     }
@@ -197,7 +198,7 @@ public class Kiosk {
 
             orderManager.makeOrder(new Bread(menuNumber, menuAmount));
         } else {
-            System.out.println("입력이 잘못됐습니다. 다시 시도해주세요.");
+            System.out.println(constants.WRONG_INPUT_MSG);
         }
         askMoreMenu();
     }
@@ -229,7 +230,7 @@ public class Kiosk {
                 System.out.println("메뉴가 아직 준비중입니다. 잠시만 기다려주세요.");
             }
         } else {
-            System.out.println("주문번호가 잘못되었습니다. 다시 확인해주세요.");
+            System.out.println(constants.WRONG_INPUT_MSG);
         }
     }
 
