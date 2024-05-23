@@ -52,7 +52,7 @@ public class OrderManager {
 
     // 주문 시 메뉴 이름 찾아서 저장
     String findNameByNumber(Coffee coffee) {
-        MenuListMaker menuListMaker = new MenuListMaker();
+        MenuListMaker menuListMaker = MenuListMaker.getMenuListMaker();
         for(Menu item : menuListMaker.getCoffeeList()) {
             if(coffee.getMenuNumber() == item.getMenuNumber()) {
                 return item.getMenuName();
@@ -62,7 +62,7 @@ public class OrderManager {
     }
 
     String findNameByNumber(Tea tea) {
-        MenuListMaker menuListMaker = new MenuListMaker();
+        MenuListMaker menuListMaker = MenuListMaker.getMenuListMaker();
         for(Menu item : menuListMaker.getTeaList()) {
             if(tea.getMenuNumber() == item.getMenuNumber()) {
                 return item.getMenuName();
@@ -72,7 +72,7 @@ public class OrderManager {
     }
 
     String findNameByNumber(Juice juice) {
-        MenuListMaker menuListMaker = new MenuListMaker();
+        MenuListMaker menuListMaker = MenuListMaker.getMenuListMaker();
         for(Menu item : menuListMaker.getJuiceList()) {
             if(juice.getMenuNumber() == item.getMenuNumber()) {
                 return item.getMenuName();
@@ -82,7 +82,7 @@ public class OrderManager {
     }
 
     String findNameByNumber(Ade ade) {
-        MenuListMaker menuListMaker = new MenuListMaker();
+        MenuListMaker menuListMaker = MenuListMaker.getMenuListMaker();
         for(Menu item : menuListMaker.getAdeList()) {
             if(ade.getMenuNumber() == item.getMenuNumber()) {
                 return item.getMenuName();
@@ -92,7 +92,7 @@ public class OrderManager {
     }
 
     String findNameByNumber(Cake cake) {
-        MenuListMaker menuListMaker = new MenuListMaker();
+        MenuListMaker menuListMaker = MenuListMaker.getMenuListMaker();
         for(Menu item : menuListMaker.getCakeList()) {
             if(cake.getMenuNumber() == item.getMenuNumber()) {
                 return item.getMenuName();
@@ -102,7 +102,7 @@ public class OrderManager {
     }
 
     String findNameByNumber(Bread bread) {
-        MenuListMaker menuListMaker = new MenuListMaker();
+        MenuListMaker menuListMaker = MenuListMaker.getMenuListMaker();
         for(Menu item : menuListMaker.getBreadList()) {
             if(bread.getMenuNumber() == item.getMenuNumber()) {
                 return item.getMenuName();
@@ -113,7 +113,7 @@ public class OrderManager {
 
     // 주문 시 메뉴 가격 찾아서 저장
     int findPriceByNumber(Coffee coffee) {
-        MenuListMaker menuListMaker = new MenuListMaker();
+        MenuListMaker menuListMaker = MenuListMaker.getMenuListMaker();
         for(Menu item : menuListMaker.getCoffeeList()) {
             if(coffee.getMenuNumber() == item.getMenuNumber()) {
                 return item.getPrice();
@@ -123,7 +123,7 @@ public class OrderManager {
     }
 
     int findPriceByNumber(Tea tea) {
-        MenuListMaker menuListMaker = new MenuListMaker();
+        MenuListMaker menuListMaker = MenuListMaker.getMenuListMaker();
         for(Menu item : menuListMaker.getTeaList()) {
             if(tea.getMenuNumber() == item.getMenuNumber()) {
                 return item.getPrice();
@@ -133,7 +133,7 @@ public class OrderManager {
     }
 
     int findPriceByNumber(Juice juice) {
-        MenuListMaker menuListMaker = new MenuListMaker();
+        MenuListMaker menuListMaker = MenuListMaker.getMenuListMaker();
         for(Menu item : menuListMaker.getJuiceList()) {
             if(juice.getMenuNumber() == item.getMenuNumber()) {
                 return item.getPrice();
@@ -143,7 +143,7 @@ public class OrderManager {
     }
 
     int findPriceByNumber(Ade ade) {
-        MenuListMaker menuListMaker = new MenuListMaker();
+        MenuListMaker menuListMaker = MenuListMaker.getMenuListMaker();
         for(Menu item : menuListMaker.getAdeList()) {
             if(ade.getMenuNumber() == item.getMenuNumber()) {
                 return item.getPrice();
@@ -153,7 +153,7 @@ public class OrderManager {
     }
 
     int findPriceByNumber(Cake cake) {
-        MenuListMaker menuListMaker = new MenuListMaker();
+        MenuListMaker menuListMaker = MenuListMaker.getMenuListMaker();
         for(Menu item : menuListMaker.getCakeList()) {
             if(cake.getMenuNumber() == item.getMenuNumber()) {
                 return item.getPrice();
@@ -163,7 +163,7 @@ public class OrderManager {
     }
 
     int findPriceByNumber(Bread bread) {
-        MenuListMaker menuListMaker = new MenuListMaker();
+        MenuListMaker menuListMaker = MenuListMaker.getMenuListMaker();
         for(Menu item : menuListMaker.getBreadList()) {
             if(bread.getMenuNumber() == item.getMenuNumber()) {
                 return item.getPrice();

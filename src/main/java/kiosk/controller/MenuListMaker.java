@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MenuListMaker {
+    private static MenuListMaker menuListMaker = new MenuListMaker();
+
     List<Coffee> coffeeList;
     List<Tea> teaList;
     List<Juice> juiceList;
@@ -37,7 +39,11 @@ public class MenuListMaker {
         return breadList;
     }
 
-    public MenuListMaker() {
+    public static MenuListMaker getMenuListMaker() {
+        return menuListMaker;
+    }
+
+    private MenuListMaker() {
         coffeeList = new ArrayList<>();
         teaList = new ArrayList<>();
         juiceList = new ArrayList<>();
@@ -57,12 +63,12 @@ public class MenuListMaker {
     }
 
     void makeCoffeeList() {
-        coffeeList.add(new Coffee(1, "아이스아메리카노", 4500));
-        coffeeList.add(new Coffee(2, "따뜻한아메리카노", 4500));
-        coffeeList.add(new Coffee(3, "아이스라떼", 4800));
-        coffeeList.add(new Coffee(4, "따뜻한라떼", 4800));
-        coffeeList.add(new Coffee(5, "아이스바닐라라떼", 5000));
-        coffeeList.add(new Coffee(6, "따뜻한바닐라라떼", 5000));
+        coffeeList.add(new Coffee(1, "아이스아메리카노", 4500, false));
+        coffeeList.add(new Coffee(2, "따뜻한아메리카노", 4500, false));
+        coffeeList.add(new Coffee(3, "아이스라떼", 4800, true));
+        coffeeList.add(new Coffee(4, "따뜻한라떼", 4800, true));
+        coffeeList.add(new Coffee(5, "아이스바닐라라떼", 5000, true));
+        coffeeList.add(new Coffee(6, "따뜻한바닐라라떼", 5000, true));
     }
 
     void makeTeaList() {
@@ -144,5 +150,15 @@ public class MenuListMaker {
                     + bread.getMenuName() + " / "
                     + bread.getPrice());
         }
+    }
+
+    // 커피에 우유가 들어가는지 반환하는 메소드
+    public boolean isCoffeeLatte(int menuNumber) {
+        for(Coffee coffee : coffeeList) {
+            if(coffee.getMenuNumber() == menuNumber && coffee.getIsLatte()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

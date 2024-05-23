@@ -16,7 +16,7 @@ public class Kiosk {
     Kiosk() {
         sc = new Scanner(System.in);
         orderManager = new OrderManager();
-        menuListMaker = new MenuListMaker();
+        menuListMaker = MenuListMaker.getMenuListMaker();
     }
 
     // 키오스크 프로그램 실행
@@ -154,6 +154,14 @@ public class Kiosk {
             if(addShot > 0) {
                 orderCoffee.addShot(addShot);
             }
+
+            if(menuListMaker.isCoffeeLatte(menuNumber)) {
+                String milkInput = askChangeMilk();
+                if(!milkInput.equals("NO")) {
+                    orderCoffee.setLatte(milkInput);
+                }
+            }
+
             orderManager.makeOrder(orderCoffee);
         } else {
             System.out.println(Constants.WRONG_INPUT_MSG.getMsg());
@@ -174,6 +182,27 @@ public class Kiosk {
             return shots;
         } else {
             return 0;
+        }
+    }
+
+    String askChangeMilk() {
+        System.out.println("우유를 바꾸시겠습니까?");
+        System.out.println("1. 바꾼다.");
+        System.out.println("2. 아니요.");
+
+        String userInput = sc.nextLine();
+
+        if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
+            System.out.println("어떤 우유로 바꾸시겠습니까?");
+            System.out.println("1. 저지방 우유");
+            System.out.println("2. 두유");
+            System.out.println("3. 귀리 우유");
+
+            userInput = sc.nextLine();
+
+            return userInput;
+        } else {
+            return "NO";
         }
     }
 
