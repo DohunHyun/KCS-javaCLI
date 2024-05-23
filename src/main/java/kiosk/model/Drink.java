@@ -1,14 +1,16 @@
 package kiosk.model;
 
+import kiosk.constant.Constants;
+
 public class Drink extends Menu {
     int moreIce;
-    int shots;
+    String shots;
     boolean isTogo;
-    int defaultShots;
+    String defaultShots;
 
     public Drink() {
         this.moreIce = 0;
-        this.shots = 0;
+        this.shots = Constants.ZERO.getMsg();
         this.isTogo = false;
     }
 
@@ -16,7 +18,7 @@ public class Drink extends Menu {
         return moreIce;
     }
 
-    public int getShots() {
+    public String getShots() {
         return shots;
     }
 
@@ -25,12 +27,12 @@ public class Drink extends Menu {
     }
 
     public void addShot(int shots) {
-        this.shots += shots;
+        this.shots = String.valueOf(Integer.parseInt(this.shots) + shots);
     }
 
     @Override
     public String toString() {
-        if(this.shots > defaultShots) {
+        if(Integer.parseInt(this.shots) > Integer.parseInt(defaultShots)) {
             return this.menuName + "(" + this.shots + "샷) " + this.amount + "개";
         }
         return super.toString();
