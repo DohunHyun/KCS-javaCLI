@@ -2,11 +2,14 @@ package kiosk.model;
 
 public class Drink extends Menu {
     int moreIce;
-    int addShot;
+    int shots;
     boolean isTogo;
+    int defaultShots;
 
     public Drink() {
-
+        this.moreIce = 0;
+        this.shots = 0;
+        this.isTogo = false;
     }
 
     public int getMoreIce() {
@@ -14,10 +17,22 @@ public class Drink extends Menu {
     }
 
     public int getAddShot() {
-        return addShot;
+        return shots;
     }
 
     public boolean isTogo() {
         return isTogo;
+    }
+
+    public void addShot(int shots) {
+        this.shots += shots;
+    }
+
+    @Override
+    public String toString() {
+        if(this.shots > defaultShots) {
+            return this.menuName + "(" + this.shots + "샷) " + this.amount + "개";
+        }
+        return super.toString();
     }
 }

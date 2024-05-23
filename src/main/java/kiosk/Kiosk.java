@@ -148,11 +148,33 @@ public class Kiosk {
             int menuNumber = Integer.parseInt(userInput.split(" ")[0]);
             int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
 
-            orderManager.makeOrder(new Coffee(menuNumber, menuAmount));
+            Coffee orderCoffee = new Coffee(menuNumber, menuAmount);
+
+            int addShot = askAddShot();
+            if(addShot > 0) {
+                orderCoffee.addShot(addShot);
+            }
+            orderManager.makeOrder(orderCoffee);
         } else {
-            System.out.println(Constants.WRONG_INPUT_MSG);
+            System.out.println(Constants.WRONG_INPUT_MSG.getMsg());
         }
         askMoreMenu();
+    }
+
+    int askAddShot() {
+        System.out.println("샷추가를 하시겠습니까? 커피는 기본 2샷 입니다.");
+        System.out.println("1. 네 / 2. 아니요");
+        String userInput = sc.nextLine();
+
+        if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
+            System.out.println("샷을 얼마나 추가 하시겠습니까? 숫자로 입력해주세요.");
+            int shots = sc.nextInt();
+            sc.nextLine();
+
+            return shots;
+        } else {
+            return 0;
+        }
     }
 
     void getTeaOrder() {
@@ -167,7 +189,7 @@ public class Kiosk {
 
             orderManager.makeOrder(new Tea(menuNumber, menuAmount));
         } else {
-            System.out.println(Constants.WRONG_INPUT_MSG);
+            System.out.println(Constants.WRONG_INPUT_MSG.getMsg());
         }
         askMoreMenu();
     }
@@ -184,7 +206,7 @@ public class Kiosk {
 
             orderManager.makeOrder(new Juice(menuNumber, menuAmount));
         } else {
-            System.out.println(Constants.WRONG_INPUT_MSG);
+            System.out.println(Constants.WRONG_INPUT_MSG.getMsg());
         }
         askMoreMenu();
     }
@@ -201,7 +223,7 @@ public class Kiosk {
 
             orderManager.makeOrder(new Ade(menuNumber, menuAmount));
         } else {
-            System.out.println(Constants.WRONG_INPUT_MSG);
+            System.out.println(Constants.WRONG_INPUT_MSG.getMsg());
         }
         askMoreMenu();
     }
@@ -218,7 +240,7 @@ public class Kiosk {
 
             orderManager.makeOrder(new Cake(menuNumber, menuAmount));
         } else {
-            System.out.println(Constants.WRONG_INPUT_MSG);
+            System.out.println(Constants.WRONG_INPUT_MSG.getMsg());
         }
         askMoreMenu();
     }
@@ -235,7 +257,7 @@ public class Kiosk {
 
             orderManager.makeOrder(new Bread(menuNumber, menuAmount));
         } else {
-            System.out.println(Constants.WRONG_INPUT_MSG);
+            System.out.println(Constants.WRONG_INPUT_MSG.getMsg());
         }
         askMoreMenu();
     }
@@ -268,7 +290,7 @@ public class Kiosk {
                 System.out.println("메뉴가 아직 준비중입니다. 잠시만 기다려주세요.");
             }
         } else {
-            System.out.println(Constants.WRONG_INPUT_MSG);
+            System.out.println(Constants.WRONG_INPUT_MSG.getMsg());
         }
     }
 
@@ -294,7 +316,7 @@ public class Kiosk {
         System.out.println("<주문 목록>");
         int price = 0;
         for(Menu menu : order.getMenuList()) {
-            System.out.println(menu.getMenuName() + " " + menu.getAmount() + "개");
+            System.out.println(menu);
             price += menu.getPrice() * menu.getAmount();
         }
         System.out.println("총 결제 금액은 " + String.format("%,d", price) + "원 입니다.");
