@@ -16,7 +16,7 @@ public class Drink extends Menu {
         return moreIce;
     }
 
-    public int getAddShot() {
+    public int getShots() {
         return shots;
     }
 

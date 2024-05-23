@@ -187,7 +187,12 @@ public class Kiosk {
             int menuNumber = Integer.parseInt(userInput.split(" ")[0]);
             int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
 
-            orderManager.makeOrder(new Tea(menuNumber, menuAmount));
+            Tea orderTea = new Tea(menuNumber, menuAmount);
+            int addShot = askAddShot();
+            if(addShot > 0) {
+                orderTea.addShot(addShot);
+            }
+            orderManager.makeOrder(orderTea);
         } else {
             System.out.println(Constants.WRONG_INPUT_MSG.getMsg());
         }
