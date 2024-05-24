@@ -11,6 +11,7 @@ public class Drink extends Menu {
     public Drink() {
         this.moreIce = 0;
         this.shots = Constants.ZERO.getMsg();
+        this.defaultShots = Constants.ZERO.getMsg();
         this.isTogo = false;
     }
 
