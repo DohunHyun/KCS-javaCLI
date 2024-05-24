@@ -289,11 +289,51 @@ public class Kiosk {
             int menuNumber = Integer.parseInt(userInput.split(" ")[0]);
             int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
 
-            orderManager.makeOrder(new Bread(menuNumber, menuAmount));
+            Bread orderBread = new Bread(menuNumber, menuAmount);
+
+            if(askNeedCut()) {
+                orderBread.setNeedCut();
+            }
+            if(askNeedWarmUp()) {
+                orderBread.setNeedWarmUp();
+            }
+            orderManager.makeOrder(orderBread);
         } else {
             System.out.println(Constants.WRONG_INPUT_MSG.getMsg());
         }
         askMoreMenu();
+    }
+
+    boolean askNeedCut() {
+        System.out.println("컷팅 하시겠습니까?");
+        System.out.println("1. 네");
+        System.out.println("2. 아니요");
+        String userInput = sc.nextLine();
+
+        if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
+            return true;
+        } else if(userInput.equals(Constants.INPUT_TWO.getMsg())) {
+            return false;
+        } else {
+            System.out.println(Constants.WRONG_INPUT_MSG.getMsg());
+            return askNeedCut();
+        }
+    }
+
+    boolean askNeedWarmUp() {
+        System.out.println("빵을 데우시겠습니까?");
+        System.out.println("1. 네");
+        System.out.println("2. 아니요");
+        String userInput = sc.nextLine();
+
+        if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
+            return true;
+        } else if(userInput.equals(Constants.INPUT_TWO.getMsg())) {
+            return false;
+        } else {
+            System.out.println(Constants.WRONG_INPUT_MSG.getMsg());
+            return askNeedWarmUp();
+        }
     }
 
     boolean validateMenuInput(String input) {
