@@ -7,7 +7,7 @@ public class NoInputTimeChecker extends Thread{
     private static final Object lock = new Object();
 
     private NoInputTimeChecker() {
-
+        lastInputTime = System.currentTimeMillis();
     }
 
     public static NoInputTimeChecker getInstance() {
@@ -23,7 +23,6 @@ public class NoInputTimeChecker extends Thread{
 
     @Override
     public void run() {
-        System.out.println("쓰레드 실행! ");
         while (true) {
             if(System.currentTimeMillis() - lastInputTime >= NO_INPUT_TIME_OUT) {
                 System.out.println("1분 동안 입력이 없어 프로그램을 종료합니다.");
