@@ -4,23 +4,29 @@ import kiosk.controller.MenuListMaker;
 import kiosk.controller.OrderManager;
 import kiosk.model.*;
 import kiosk.constant.Constants;
+import kiosk.util.InputManager;
+import kiosk.util.TimeChecker;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Kiosk {
-    static Scanner sc;
+//    static Scanner sc;
     static OrderManager orderManager;
     static MenuListMaker menuListMaker;
+    static TimeChecker timeChecker;
+    static InputManager inputManager;
 
     Kiosk() {
-        sc = new Scanner(System.in);
         orderManager = new OrderManager();
         menuListMaker = MenuListMaker.getMenuListMaker();
+        timeChecker = new TimeChecker();
+        inputManager = new InputManager();
     }
 
     // 키오스크 프로그램 실행
     void run() {
+        timeChecker.timerStart();
         while(true) {
             System.out.println(" _____    _    _____ _____  __  __ ____ ____");
             System.out.println("/ ___|   / \\  |  ___| ____| | |/ / ___/ ___|");
@@ -51,7 +57,7 @@ public class Kiosk {
         System.out.println("1. 주문하기");
         System.out.println("2. 주문확인");
 
-        String userInput = sc.nextLine();
+        String userInput = inputManager.getInput();
 
         if(userInput.equals(Constants.INPUT_ONE.getMsg())
                 || userInput.equals(Constants.INPUT_TWO.getMsg())) {
@@ -72,7 +78,7 @@ public class Kiosk {
         System.out.println("2. 음식 (케이크, 빵)");
         System.out.println("3. 종료 / 처음으로");
 
-        String userInput = sc.nextLine();
+        String userInput = inputManager.getInput();
         if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
             getDrinkOrder();
         } else if(userInput.equals(Constants.INPUT_TWO.getMsg())) {
@@ -93,7 +99,7 @@ public class Kiosk {
         System.out.println("3. " + Constants.JUICE.getMsg());
         System.out.println("4. " + Constants.ADE.getMsg());
 
-        String userInput = sc.nextLine();
+        String userInput = inputManager.getInput();
         if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
             getCoffeeOrder();
         } else if(userInput.equals(Constants.INPUT_TWO.getMsg())) {
@@ -113,7 +119,7 @@ public class Kiosk {
         System.out.println("1. " + Constants.CAKE.getMsg());
         System.out.println("2. " + Constants.BREAD.getMsg());
 
-        String userInput = sc.nextLine();
+        String userInput = inputManager.getInput();
         if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
             getCakeOrder();
         } else if(userInput.equals(Constants.INPUT_TWO.getMsg())) {
@@ -143,7 +149,7 @@ public class Kiosk {
         menuListMaker.printCoffeeMenu();
         printHowInput();
 
-        String userInput = sc.nextLine();
+        String userInput = inputManager.getInput();
         if(validateMenuInput(userInput)) {
             int menuNumber = Integer.parseInt(userInput.split(" ")[0]);
             int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
@@ -172,12 +178,11 @@ public class Kiosk {
     int askAddShot() {
         System.out.println("샷추가를 하시겠습니까? 커피는 기본 2샷 입니다.");
         System.out.println("1. 네 / 2. 아니요");
-        String userInput = sc.nextLine();
+        String userInput = inputManager.getInput();
 
         if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
             System.out.println("샷을 얼마나 추가 하시겠습니까? 숫자로 입력해주세요.");
-            int shots = sc.nextInt();
-            sc.nextLine();
+            int shots = inputManager.getInputInteger();
 
             return shots;
         } else {
@@ -190,7 +195,7 @@ public class Kiosk {
         System.out.println("1. 바꾼다.");
         System.out.println("2. 아니요.");
 
-        String userInput = sc.nextLine();
+        String userInput = inputManager.getInput();
 
         if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
             System.out.println("어떤 우유로 바꾸시겠습니까?");
@@ -198,7 +203,7 @@ public class Kiosk {
             System.out.println("2. 두유");
             System.out.println("3. 귀리 우유");
 
-            userInput = sc.nextLine();
+            userInput = inputManager.getInput();
 
             return userInput;
         } else {
@@ -211,7 +216,7 @@ public class Kiosk {
         menuListMaker.printTeaMenu();
         printHowInput();
 
-        String userInput = sc.nextLine();
+        String userInput = inputManager.getInput();
         if(validateMenuInput(userInput)) {
             int menuNumber = Integer.parseInt(userInput.split(" ")[0]);
             int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
@@ -233,7 +238,7 @@ public class Kiosk {
         menuListMaker.printJuiceMenu();
         printHowInput();
 
-        String userInput = sc.nextLine();
+        String userInput = inputManager.getInput();
         if(validateMenuInput(userInput)) {
             int menuNumber = Integer.parseInt(userInput.split(" ")[0]);
             int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
@@ -250,7 +255,7 @@ public class Kiosk {
         menuListMaker.printAdeMenu();
         printHowInput();
 
-        String userInput = sc.nextLine();
+        String userInput = inputManager.getInput();
         if(validateMenuInput(userInput)) {
             int menuNumber = Integer.parseInt(userInput.split(" ")[0]);
             int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
@@ -267,7 +272,7 @@ public class Kiosk {
         menuListMaker.printCakeMenu();
         printHowInput();
 
-        String userInput = sc.nextLine();
+        String userInput = inputManager.getInput();
         if(validateMenuInput(userInput)) {
             int menuNumber = Integer.parseInt(userInput.split(" ")[0]);
             int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
@@ -284,7 +289,7 @@ public class Kiosk {
         menuListMaker.printBreadMenu();
         printHowInput();
 
-        String userInput = sc.nextLine();
+        String userInput = inputManager.getInput();
         if(validateMenuInput(userInput)) {
             int menuNumber = Integer.parseInt(userInput.split(" ")[0]);
             int menuAmount = Integer.parseInt(userInput.split(" ")[1]);
@@ -308,7 +313,7 @@ public class Kiosk {
         System.out.println("컷팅 하시겠습니까?");
         System.out.println("1. 네");
         System.out.println("2. 아니요");
-        String userInput = sc.nextLine();
+        String userInput = inputManager.getInput();
 
         if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
             return true;
@@ -324,7 +329,7 @@ public class Kiosk {
         System.out.println("빵을 데우시겠습니까?");
         System.out.println("1. 네");
         System.out.println("2. 아니요");
-        String userInput = sc.nextLine();
+        String userInput = inputManager.getInput();
 
         if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
             return true;
@@ -353,8 +358,7 @@ public class Kiosk {
     void checkOrder() {
         System.out.println();
         System.out.println("주문 확인을 위한 주문 번호를 입력해주세요.");
-        int userInput = sc.nextInt();
-        sc.nextLine();
+        int userInput = inputManager.getInputInteger();
 
         Order order = orderManager.checkOrderByNumber(userInput);
         if(order != null) {
@@ -374,7 +378,7 @@ public class Kiosk {
         System.out.println("1. 추가");
         System.out.println("2. 결제");
 
-        String userInput = sc.nextLine();
+        String userInput = inputManager.getInput();
         if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
             getOrder();
         } else if(userInput.equals(Constants.INPUT_TWO.getMsg())) {
@@ -406,7 +410,7 @@ public class Kiosk {
         System.out.println("키오스크 사용을 그만할까요?");
         System.out.println("종료를 원하시면 1, 계속 사용하고 싶으면 2 를 입력해주세요.");
 
-        String userInput = sc.nextLine();
+        String userInput = inputManager.getInput();
         if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
             System.out.println("사용해주셔서 감사합니다. 다음에 또 방문해주세요.");
             return true;
