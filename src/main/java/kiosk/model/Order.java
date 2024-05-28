@@ -28,4 +28,8 @@ public class Order {
     public boolean getIsGetReady() {
         return isReadyOrder;
     }
+
+    public void setReadyOrder() {
+        this.isReadyOrder = true;
+    }
 }

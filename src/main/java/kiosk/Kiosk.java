@@ -8,10 +8,8 @@ import kiosk.util.InputManager;
 import kiosk.util.TimeChecker;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Kiosk {
-//    static Scanner sc;
     static OrderManager orderManager;
     static MenuListMaker menuListMaker;
     static TimeChecker timeChecker;

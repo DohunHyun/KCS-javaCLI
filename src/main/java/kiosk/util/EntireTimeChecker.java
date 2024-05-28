@@ -3,7 +3,7 @@ package kiosk.util;
 public class EntireTimeChecker extends Thread {
     private static EntireTimeChecker entireTimeChecker = new EntireTimeChecker();
     private static long startTime;
-    private static final long MAX_RUNTIME =  30 * 1000;
+    private static final long MAX_RUNTIME =  5 * 60 * 1000;
     private volatile boolean running = true;
 
     private EntireTimeChecker() {
