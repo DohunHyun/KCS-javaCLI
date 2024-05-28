@@ -411,6 +411,7 @@ public class Kiosk {
         String userInput = inputManager.getInput();
         if(userInput.equals(Constants.INPUT_ONE.getMsg())) {
             System.out.println("사용해주셔서 감사합니다. 다음에 또 방문해주세요.");
+            System.exit(0);
             return true;
         } else if(userInput.equals(Constants.INPUT_TWO.getMsg())) {
             System.out.println();

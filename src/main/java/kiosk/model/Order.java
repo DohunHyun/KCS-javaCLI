@@ -7,6 +7,7 @@ public class Order {
     int orderNumber;
     boolean isReadyOrder = false;
     List<Menu> menuList;
+    boolean isNoti = false;
 
     public Order(int orderNumber) {
         this.orderNumber = orderNumber + 1;
@@ -31,5 +32,13 @@ public class Order {
 
     public void setReadyOrder() {
         this.isReadyOrder = true;
+    }
+
+    public boolean getIsNoti() {
+        return this.isNoti;
+    }
+
+    public void setNoti() {
+        this.isNoti = true;
     }
 }

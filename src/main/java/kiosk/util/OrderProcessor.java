@@ -12,12 +12,13 @@ public class OrderProcessor extends Thread {
     }
 
     @Override
-    public void run() {
+    public synchronized void run() {
         while(true) {
             try {
                 Order order = orderQueue.take();
                 Thread.sleep(order.getMenuList().size() * 10 * 1000);
                 order.setReadyOrder();
+                orderQueue.put(order);
             } catch (InterruptedException e) {
                 System.out.println("Order processing thread interrupted.");
                 Thread.currentThread().interrupt();

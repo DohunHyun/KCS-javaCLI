@@ -15,6 +15,7 @@ public class Coffee extends Drink {
         super.defaultShots = Constants.DEFAULT_SHOTS.getMsg();
         if(menuListMaker.isCoffeeLatte(menuNumber)) {
             this.isLatte = true;
+            this.milk = Constants.MILK.getMsg();
         } else {
             this.isLatte = false;
         }
