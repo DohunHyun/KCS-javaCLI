@@ -59,15 +59,6 @@ public class OrderManager {
         order.addMenuList(bread);
     }
 
-//    public void addOrderToQueue(Order order) {
-//        try {
-//            orderQueue.put(order);
-//        } catch (InterruptedException e) {
-//            System.out.println("주문을 큐에 추가하는데 실패했습니다.");
-//            Thread.currentThread().interrupt();
-//        }
-//    }
-
     // 주문 시 메뉴 이름 찾아서 저장
     String findNameByNumber(Coffee coffee) {
         MenuListMaker menuListMaker = MenuListMaker.getMenuListMaker();
